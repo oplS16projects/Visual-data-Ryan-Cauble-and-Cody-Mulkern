@@ -2,10 +2,6 @@
 
 
 
-### Evaluation of Results
-How will you know if you are successful? 
-If you include some kind of _quantitative analysis,_ that would be good.
-
 ## Architecture Diagram
 Upload the architecture diagram you made for your slide presentation to your repository, and include it in-line here.
 
@@ -52,6 +48,11 @@ At the live demo we will be able to do the following:
 - Use the data to generate a detailed 3D visual representation. 
 - Display the results of some statistical anaysis visually. 
 - It will be interactive.
+
+### Evaluation of Results
+
+To verify if our results are correct we could compare the output to known working statistics applications.
+For the visual part, well if we see a graph then chances are that it worked to at least some degree. 
 
 ## Work Plan and Schedule
 
