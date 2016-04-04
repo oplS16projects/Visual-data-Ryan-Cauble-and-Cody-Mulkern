@@ -49,7 +49,8 @@ Upload the architecture diagram you made for your slide presentation to your rep
 
 Create several paragraphs of narrative to explain the pieces and how they interoperate.
 
-![VDAD](Visual-data-Ryan-Cauble-and-Cody-Mulkern/VDAD.jpg)
+![VDAD](https://raw.githubusercontent.com/oplS16projects/Visual-data-Ryan-Cauble-and-Cody-Mulkern/master/VDAD.jpg)
+
 
 
 
