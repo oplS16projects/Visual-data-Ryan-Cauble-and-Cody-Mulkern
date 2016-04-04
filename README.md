@@ -34,7 +34,7 @@ is important to consider.
 At the live demo we will be able to do the following: 
 - Input data from an outside file.  
 - Show that the data is neatly contained within our database.
-- Use the data to generate a detailed 3D visual representation. 
+- Use the data to generate a detailed 2D/3D visual representation. 
 - Display the results of some statistical anaysis visually. 
 - It will be interactive.
 
