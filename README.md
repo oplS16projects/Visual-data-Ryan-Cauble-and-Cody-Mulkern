@@ -1,16 +1,5 @@
 # Visual-data-Ryan-Cauble-and-Cody-Mulkern
 
-
-
-## Architecture Diagram
-Upload the architecture diagram you made for your slide presentation to your repository, and include it in-line here.
-
-Create several paragraphs of narrative to explain the pieces and how they interoperate.
-
-
-### Final Presentation (last week of semester)
-What additionally will be done in the last chunk of time?
-
 # FP4-proposal
 
 # Project Title: Visual Data
@@ -54,6 +43,14 @@ At the live demo we will be able to do the following:
 To verify if our results are correct we could compare the output to known working statistics applications.
 For the visual part, well if we see a graph then chances are that it worked to at least some degree. 
 
+
+## Architecture Diagram
+Upload the architecture diagram you made for your slide presentation to your repository, and include it in-line here.
+
+Create several paragraphs of narrative to explain the pieces and how they interoperate.
+
+
+
 ## Work Plan and Schedule
 
 This project will be accomplished is steps. The first things that will be worked on is the database and extracting
@@ -73,6 +70,9 @@ What exactly will be turned in on this day?
 - code that accomplishes mathmatical computation of data.
 - code that accomplishes displaying results graphically.
 
+### Final Presentation (last week of semester)
+Any time that is left will be spent on optimizing and looking into adding extra functionality. 
+
 
 ## Group Responsibilities
 
@@ -89,13 +89,12 @@ Create your 2- to 3-slide presentation in [Google Slides][gslides]. Then, import
 * [Sherman section][shermanslides]
 
 
+
 <!-- Links -->
 [forum]: https://groups.google.com/forum/#!forum/uml-opl-spr16
 [markdown]: https://help.github.com/articles/markdown-basics/
 [gslides]:https://slides.google.com
 [martinslides]:https://docs.google.com/presentation/d/1EqE432gl3Narx8a2vZQKvchEmoYqMkzR3SrHFr5LiAg
 [shermanslides]:https://docs.google.com/presentation/d/1T7uZLQLm-umosUfEK9cp4VNGjUm8SUN1DCVTzlGvr2Q
-
-
 
 
