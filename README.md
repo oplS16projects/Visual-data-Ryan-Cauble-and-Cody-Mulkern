@@ -87,7 +87,8 @@ Any time that is left will be spent on optimizing and looking into adding extra 
 will write the code that creates the database and the code that generates the results visually.
 
 ### Cody Mulkern
-will write the code that extracts data from an outside file and the code that computes the data mathematically.
+To extract the data from an outside file and manipulate it in a useful way. This will be done using the built in racket file input/output streams. From there the the data will need to be put into a database of some sort to be used later for computation and graphing.
+
 
 
 
