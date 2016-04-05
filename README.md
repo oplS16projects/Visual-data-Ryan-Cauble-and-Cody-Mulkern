@@ -56,6 +56,7 @@ These lists will then be used by our database procedures to organize the data. T
 
 Math will then be performed in procedures we create to obtain useful statistical information. The exact type of math procedures we create will vary depending on the kind of information we want to obtain.
 
+Finally in the last two blocks we will implement various 2D and 3D graphical procedures. These graphing procedures from the (plot) racket library will use the data we worked on in our database. When these procedures finish a visual representation of the data will be displayed for the user.
 
 ## Work Plan and Schedule
 
