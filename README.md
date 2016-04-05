@@ -87,21 +87,8 @@ Any time that is left will be spent on optimizing and looking into adding extra 
 will write the code that creates the database and the code that generates the results visually.
 
 ### Cody Mulkern
-will write the code that extracts data from an outside file and the code that computes the data mathmatically.
-
-## Proposal Presentations
-Create your 2- to 3-slide presentation in [Google Slides][gslides]. Then, import them into one of the two slide decks:
-
-* [Martin section][martinslides]
-* [Sherman section][shermanslides]
+will write the code that extracts data from an outside file and the code that computes the data mathematically.
 
 
-
-<!-- Links -->
-[forum]: https://groups.google.com/forum/#!forum/uml-opl-spr16
-[markdown]: https://help.github.com/articles/markdown-basics/
-[gslides]:https://slides.google.com
-[martinslides]:https://docs.google.com/presentation/d/1EqE432gl3Narx8a2vZQKvchEmoYqMkzR3SrHFr5LiAg
-[shermanslides]:https://docs.google.com/presentation/d/1T7uZLQLm-umosUfEK9cp4VNGjUm8SUN1DCVTzlGvr2Q
 
 
