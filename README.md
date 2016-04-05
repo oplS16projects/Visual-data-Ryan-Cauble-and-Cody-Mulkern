@@ -45,13 +45,10 @@ For the visual part, well if we see a graph then chances are that it worked to a
 
 
 ## Architecture Diagram
-Upload the architecture diagram you made for your slide presentation to your repository, and include it in-line here.
-
-Create several paragraphs of narrative to explain the pieces and how they interoperate.
 
 ![VDAD](https://raw.githubusercontent.com/oplS16projects/Visual-data-Ryan-Cauble-and-Cody-Mulkern/master/VDAD.jpg)
 
-
+It all starts with data. In the upper left corner of the diagram you can see the blocks for (Big Data) and (User Entered Data). Big data is meant to represent any large amount of data that could be found on the interent or from various other sources. The problem with big data is that it takes to long to process manually, so companies need programs to automate this process. This is what our company Visual Data aims to do. Then of course we do not limit our program to huge corporations. User Entered Data represents the ability to enter small amounts of data as well.
 
 
 ## Work Plan and Schedule
