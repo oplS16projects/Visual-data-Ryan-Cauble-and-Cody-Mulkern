@@ -50,6 +50,12 @@ For the visual part, well if we see a graph then chances are that it worked to a
 
 It all starts with data. In the upper left corner of the diagram you can see the blocks for (Big Data) and (User Entered Data). Big data is meant to represent any large amount of data that could be found on the interent or from various other sources. The problem with big data is that it takes to long to process manually, so companies need programs to automate this process. This is what our company Visual Data aims to do. Then of course we do not limit our program to huge corporations. User Entered Data represents the ability to enter small amounts of data as well.
 
+To start the process we use our extraction code to disiminate the data into a organized and workable state. This workable state will basically be the data represented into lists. 
+
+These lists will then be used by our database procedures to organize the data. This data will remain in the database till it is ready to be worked on. 
+
+Math will then be performed in procedures we create to obtain useful statistical information. The exact type of math procedures we create will vary depending on the kind of information we want to obtain.
+
 
 ## Work Plan and Schedule
 
