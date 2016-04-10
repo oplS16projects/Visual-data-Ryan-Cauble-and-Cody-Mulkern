@@ -238,7 +238,8 @@
 
 
 ;; Cody I need retrieveData3 to work with multiple lines of data in a file.
- (define retrieveData6 (file->list "testData2.txt"))  ;; creates list of list from the data.
+
+;; (define retrieveData3 (list (file->list "testData.txt")))  ;; creates list of list from the data.
 ;; this code as it is will work for data in this form:
 
 ;'Bob_Autos 2015 100 200 300 400 500 600 700 800 900 1000 1100 1200
@@ -251,27 +252,6 @@
 ;'Lee_Autos 2015 100 200 300 400 500 600 700 800 900 1000 1100 1200
 
 
-
-
-;;
-;; http://stackoverflow.com/questions/8725832/how-to-split-list-into-evenly-sized-chunks-in-racket-scheme
-;; USERNAME: yari
-;;
-;; Takes the one large list that it created from importing from the file and splits it into smaller
-;; lists to enter each dealership into the dB
-;;
-;;
-(define (split-by lst n)
-   (if (not (empty? lst))
-       (cons (take lst n) (split-by (drop lst n) n))
-       '() ))
-
-
-(define (makeDealerList fileName)
-  (split-by (file->list "testData2.txt") 14)
-)
-
-(define retrieveData7 (makeDealerList "testData2.txt") )
 
 
 
