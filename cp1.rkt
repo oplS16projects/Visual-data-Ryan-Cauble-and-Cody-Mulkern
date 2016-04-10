@@ -268,7 +268,7 @@
 
 
 (define (makeDealerList fileName)
-  (split-by (file->list "testData2.txt") 14)
+  (split-by (file->list fileName) 14)
 )
 
 (define retrieveData7 (makeDealerList "testData2.txt") )
