@@ -64,14 +64,14 @@
                        )
   
   (if (null? carDB)
-;     (set! carDB (cons (list insert-record dealership year month  sold-in-year) carDB))
-     (set! carDB (cons (list insert-record dealership year
+
+     (set! carDB (cons (list dealership year
                        one two three four five six seven eight nine ten eleven tweleve 
                              sold-in-year
                              ) carDB))
      
-;     (set! carDB (append carDB (list (list insert-record dealership year month  sold-in-year))))
-          (set! carDB (append carDB (list (list insert-record dealership year
+
+          (set! carDB (append carDB (list (list dealership year
                        one two three four five six seven eight nine ten eleven tweleve 
                                                 sold-in-year
                                                 ))))
@@ -218,7 +218,7 @@
 ;; The above code accomplishes the following:
 ;> (insert-record-list retrieveData3)
 ;> carDB
-;'((#<procedure:insert-record>
+;'((
 ;   'Bob_Autos
 ;   2015
 ;   100
@@ -238,7 +238,8 @@
 
 
 ;; Cody I need retrieveData3 to work with multiple lines of data in a file.
- (define retrieveData6 (file->list "testData2.txt"))  ;; creates list of list from the data.
+
+;; (define retrieveData6 (list (file->list "testData.txt")))  ;; creates list of list from the data.
 ;; this code as it is will work for data in this form:
 
 ;'Bob_Autos 2015 100 200 300 400 500 600 700 800 900 1000 1100 1200
@@ -249,7 +250,6 @@
 ;'Jil_Autos 2015 100 200 300 400 500 600 700 800 900 1000 1100 1200
 ;'Bic_Autos 2015 100 200 300 400 500 600 700 800 900 1000 1100 1200
 ;'Lee_Autos 2015 100 200 300 400 500 600 700 800 900 1000 1100 1200
-
 
 
 
@@ -273,6 +273,115 @@
 
 (define retrieveData7 (makeDealerList "testData2.txt") )
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; adding aditional functionality to the database.
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; The following procedures will extract all the data from a current month for all
+;; the dealerships.... Or for whatever type of data we are analyzing.
+
+;;(all-January carDB)
+;;'(101 102 103 104)
+(define (all-January lst)
+  (if (null? lst)
+      '()
+      (cons (get-January-value2 (car lst)) (all-January (cdr lst)))
+  )
+)
+
+(define (all-February lst)
+  (if (null? lst)
+      '()
+      (cons (get-February-value2 (car lst)) (all-February (cdr lst)))
+  )
+)
+
+(define (all-March lst)
+  (if (null? lst)
+      '()
+      (cons (get-March-value2 (car lst)) (all-March (cdr lst)))
+  )
+)
+
+(define (all-April lst)
+  (if (null? lst)
+      '()
+      (cons (get-April-value2 (car lst)) (all-April (cdr lst)))
+  )
+)
+
+(define (all-May lst)
+  (if (null? lst)
+      '()
+      (cons (get-May-value2 (car lst)) (all-May (cdr lst)))
+  )
+)
+
+(define (all-June lst)
+  (if (null? lst)
+      '()
+      (cons (get-June-value2 (car lst)) (all-June (cdr lst)))
+  )
+)
+
+(define (all-July lst)
+  (if (null? lst)
+      '()
+      (cons (get-July-value2 (car lst)) (all-July (cdr lst)))
+  )
+)
+
+(define (all-August lst)
+  (if (null? lst)
+      '()
+      (cons (get-August-value2 (car lst)) (all-August (cdr lst)))
+  )
+)
+
+(define (all-September lst)
+  (if (null? lst)
+      '()
+      (cons (get-September-value2 (car lst)) (all-September (cdr lst)))
+  )
+)
+
+(define (all-October lst)
+  (if (null? lst)
+      '()
+      (cons (get-October-value2 (car lst)) (all-October (cdr lst)))
+  )
+)
+
+(define (all-November lst)
+  (if (null? lst)
+      '()
+      (cons (get-November-value2 (car lst)) (all-November (cdr lst)))
+  )
+)
+
+;;> (all-December carDB)
+;;'(1201 1202 1203 1204)
+(define (all-December lst)
+  (if (null? lst)
+      '()
+      (cons (get-December-value2 (car lst)) (all-December (cdr lst)))
+  )
+)
+;; all year totals
+;; (all-Twelve-Month-Sum2  carDB)
+;; '(15624 15648 15672 15696)
+(define (all-Twelve-Month-Sum2  lst)
+  (if (null? lst)
+      '()
+      (cons (Twelve-Month-Sum2 (car lst)) (all-Twelve-Month-Sum2 (cdr lst)))
+  )
+)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; insert into database
+(insert-record-list retrieveData7)
 
 
 
