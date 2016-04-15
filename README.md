@@ -14,7 +14,8 @@ For this first milestone we got our project set up on github.
 ```racket
 (define retrieveData3 (list (file->list "testData.txt")))
 ```
--Having this Ryan was able to set up the database and start writting the accessors to access the data inside the db
+-Having this Ryan was able to set up the database and start writting the accessors to access the data inside the db. Procedures were
+written to do things like grab all the cars sold in the month of may from every dealership. Additional similar procedures will be added as we determine what else is needed. 
 ```racket
 (insert-record-list retrieveData3)
 ```
