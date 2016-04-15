@@ -21,7 +21,7 @@ For this first milestone we got our project set up on github.
 - - This will create a record inside the db which will looking something like this
 ![alt](https://raw.githubusercontent.com/oplS16projects/Visual-data-Ryan-Cauble-and-Cody-Mulkern/master/dbTest.PNG)
 
-- The next problem we had was trying to adding tons of data at once using a large file. The way reading from a file works was creating one giant list and we needed to split it up by each records data. Cody tried using the built in split functions that were built into racket but none were suited to the task we needed it for. He found someones method of using racket's take and drop procedures to split a list at any index which allowed for us to read in a file and receive this:
+- The next problem we had was trying to add tons of data at once using a large file. The way reading from a file works was creating one giant list and we needed to split it up by each records data. Cody tried using the built in split functions that were built into racket but none were suited to the task we needed it for. He found someones method of using racket's take and drop procedures to split a list at any index which allowed for us to read in a file and receive this:
 ![alt](https://raw.githubusercontent.com/oplS16projects/Visual-data-Ryan-Cauble-and-Cody-Mulkern/master/listDbTest.PNG)
 
 - Here is the precedure for splitting up the lists:
