@@ -1,8 +1,55 @@
 # Visual-data-Ryan-Cauble-and-Cody-Mulkern
 
-# FP4-proposal
+# FP4-Milestone 1
 
 # Project Title: Visual Data
+
+### Milestone 1
+For this first milestone we got our project set up on github.
+- We both set up git on our computers and started our project.
+- Our goals for the first milestone are below
+- - code that accomplishes pulling in data from an outside file.
+- - code that accomplishes organizing that data into a database.
+- Cody got the code bring in data from a file
+```racket
+(define retrieveData3 (list (file->list "testData.txt")))
+```
+-Having this Ryan was able to set up the database and start writting the accessors to access the data inside the db
+```racket
+(insert-record-list retrieveData3)
+```
+- - This will create a record inside the db which will looking something like this
+![alt](https://raw.githubusercontent.com/oplS16projects/Visual-data-Ryan-Cauble-and-Cody-Mulkern/master/dbTest.PNG)
+
+- The next problem we had was trying to adding tons of data at once using a large file. The way reading from a file works was creating one giant list and we needed to split it up by each records data. Cody tried using the built in split functions that were built into racket but none were suited to the task we needed it for. He found someones method of using racket's take and drop procedures to split a list at any index which allowed for us to read in a file and receive this:
+![alt](https://raw.githubusercontent.com/oplS16projects/Visual-data-Ryan-Cauble-and-Cody-Mulkern/master/listDbTest.PNG)
+
+- Here is the precedure for splitting up the lists:
+```racket
+;;
+;; http://stackoverflow.com/questions/8725832/how-to-split-list-into-evenly-sized-chunks-in-racket-scheme
+;; USERNAME: yari
+;;
+;; Takes the one large list that it created from importing from the file and splits it into smaller
+;; lists to enter each dealership into the dB
+;;
+;;
+(define (split-by lst n)
+   (if (not (empty? lst))
+       (cons (take lst n) (split-by (drop lst n) n))
+       '() ))
+
+
+(define (makeDealerList fileName)
+  (split-by (file->list fileName) 14)
+)
+
+(define retrieveData7 (makeDealerList "testData2.txt") )
+```
+
+So now we have achieved reading in from the REPL and from files and stored it into a database therfore compeleting out first milestones goals. For the next milestone we plan to actually start using the data and creating ways to view and compare data.
+
+
 ### Problem Statement
 When looking at large amounts of data it is sometimes hard to visualize the big picture of whats really going on. 
 Lets pretend that you own a car dealership and want to know what months typically have the largest sales. To find out
@@ -65,7 +112,7 @@ data from a outside file. Once the data is organized into a database we will wor
 graphically through the plot library. Then we will work on different relevant statistical analysis functions to discover 
 cool things about the data. Once the math is done we will look at ways to also display that data. 
 
-### First Milestone (04-13)
+### First Milestone (04-15)
 What exactly will be turned in on this day?
 
 - code that accomplishes pulling in data from an outside file.
