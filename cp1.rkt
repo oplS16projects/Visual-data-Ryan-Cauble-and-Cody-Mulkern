@@ -472,6 +472,70 @@
 ;; > (dealer-year-sales ''Jil_Autos 2015 carDB)
 ;; '(102 202 302 402 502 602 702 802 902 1002 1102 1202)
 
+;; This one is a little different it also adds the dealer name and year into
+;; the list so it works with our make-vector procedure.
+(define (dealer-year-sales2 name year db)
+  (cond ((null? db) 
+            0)
+        ((and (equal? (get-dealership (car db)) name) 
+              (equal? (get-year (car db)) year))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;  creates the list of year sales
+          (list
+               name
+               year
+               (get-January-value2 (car db))  
+               (get-February-value2 (car db))   
+               (get-March-value2 (car db))  
+               (get-April-value2 (car db))  
+               (get-May-value2 (car db))  
+               (get-June-value2 (car db))  
+               (get-July-value2 (car db)) 
+               (get-August-value2 (car db)) 
+               (get-September-value2 (car db))  
+               (get-October-value2 (car db))  
+               (get-November-value2 (car db))  
+               (get-December-value2 (car db))
+           ))    
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;        
+        (else 
+            (dealer-year-sales2 name year (cdr db)))
+  )
+)
+
+;; the above produces the following:
+;> (dealer-year-sales2 ''Jil_Autos 2015 carDB)
+;'('Jil_Autos
+;  2015
+;  102
+;  202
+;  302
+;  402
+;  502
+;  602
+;  702
+;  802
+;  902
+;  1002
+;  1102
+;  1202)
+;> (make-vector (dealer-year-sales2 ''Jil_Autos 2015 carDB))
+;'(#(January 102)
+;  #(Feburary 202)
+;  #(March 302)
+;  #(April 402)
+;  #(May 502)
+;  #(June 602)
+;  #(July 702)
+;  #(August 802)
+;  #(September 902)
+;  #(October 1002)
+;  #(November 1102)
+;  #(December 1202))
+;> 
+
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
