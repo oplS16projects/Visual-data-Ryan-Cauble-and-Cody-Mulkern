@@ -421,7 +421,60 @@
                                                                                                   (stddev (take (list-tail rec 2) 12))))
 )
 
-;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+;; This function searches database to see if a record with the dealership and year match.
+;; returns true if it exists and false if it does not.
+(define (dealer-exist? name year db)
+  (cond ((null? db) 
+            #f)
+        ((and (equal? (get-dealership (car db)) name) 
+              (equal? (get-year (car db)) year))
+              #t)
+        (else 
+            (dealer-exist? name year (cdr db)))
+  )
+)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; This function takes in a dealership name and year, checks to see
+;; if they exist and then outputs a list of all the sales that dealer
+;; had in the given year. 
+(define (dealer-year-sales name year db)
+  (cond ((null? db) 
+            0)
+        ((and (equal? (get-dealership (car db)) name) 
+              (equal? (get-year (car db)) year))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;  creates the list of year sales
+          (list
+               (get-January-value2 (car db))  
+               (get-February-value2 (car db))   
+               (get-March-value2 (car db))  
+               (get-April-value2 (car db))  
+               (get-May-value2 (car db))  
+               (get-June-value2 (car db))  
+               (get-July-value2 (car db)) 
+               (get-August-value2 (car db)) 
+               (get-September-value2 (car db))  
+               (get-October-value2 (car db))  
+               (get-November-value2 (car db))  
+               (get-December-value2 (car db))
+           ))    
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;        
+        (else 
+            (dealer-year-sales name year (cdr db)))
+  )
+)
+
+;; This is test output for above function.
+;; > (dealer-year-sales ''Jil_Autos 2015 carDB)
+;; '(102 202 302 402 502 602 702 802 902 1002 1102 1202)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
