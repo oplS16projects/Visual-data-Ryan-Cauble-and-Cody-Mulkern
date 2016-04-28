@@ -1,5 +1,79 @@
 # Visual-data-Ryan-Cauble-and-Cody-Mulkern
 
+
+# FP7-webpage Visual Data
+
+##Authors
+Ryan Cauble
+
+Cody Mulkern
+
+##Overview
+Take in small or large amounts of data from an outside file. Store this data into a database for organization and easy access to desired sub parts of that data. Perform Mathmatical operations on that data and display it visually in a graph.  
+
+##Screenshot
+(insert a screenshot here. You may opt to get rid of the title for it. You need at least one screenshot. Make it actually appear here, don't just add a link.)
+
+Here's a demonstration of how to display an image that's uploaded to this repo:
+![screenshot showing env diagram](withdraw.png)
+
+##Concepts Demonstrated
+Identify the OPL concepts demonstrated in your project. Be brief. A simple list and example is sufficient. 
+* **Data abstraction** is used to provide access to the data in the database.
+
+
+##External Technology and Libraries
+>(delete this line)Briefly describe the existing technology you utilized, and how you used it. Provide a link to that technology(ies).
+
+(require math/statistics) was used to perform computation on the data. 
+
+(require plot) was used to display the results we wanted visually in a graph.
+
+
+##Favorite Scheme Expressions
+####Ryan
+My favorite procedure was one I wrote to add up all numbers in all the months for a giving year. This procedure will do this for every record in the database. This is cool because the actual code to accomplish this is so small utilizing a foldl (functional composition).
+```scheme
+(define (Twelve-Month-Sum2 rec)
+ (foldl (lambda (elem v) 
+           (+ v elem)) 
+         0 
+         (list-tail rec 2)
+         )
+)  
+```
+####Lillian (another team member)
+This expression reads in a regular expression and elegantly matches it against a pre-existing hashmap....
+```scheme
+(let* ((expr (convert-to-regexp (read-line my-in-port)))
+             (matches (flatten
+                       (hash-map *words*
+                                 (lambda (key value)
+                                   (if (regexp-match expr key) key '()))))))
+  matches)
+```
+
+##Additional Remarks
+Anything else you want to say in your report. Can rename or remove this section.
+
+#How to Download and Run
+You may want to link to your latest release for easy downloading by people (such as Mark).
+
+Include what file to run, what to do with that file, how to interact with the app when its running, etc. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # FP4-Milestone 1
 
 # Project Title: Visual Data
