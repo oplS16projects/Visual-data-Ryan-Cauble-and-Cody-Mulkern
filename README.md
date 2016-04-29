@@ -12,23 +12,28 @@ Cody Mulkern
 Take in small or large amounts of data from an outside file. Store this data into a database for organization and easy access to desired sub parts of that data. Perform Mathmatical operations on that data and display it visually in a graph.  
 
 ##Screenshot
+```scheme
+> (vs ''Bob_Autos 2015 ''Jil_Autos 2014)
+```
 ![alt](https://raw.githubusercontent.com/oplS16projects/Visual-data-Ryan-Cauble-and-Cody-Mulkern/master/Bob_Autos2015%20VS%20Jil_Autos2014.png)
-(insert a screenshot here. You may opt to get rid of the title for it. You need at least one screenshot. Make it actually appear here, don't just add a link.)
 
-Here's a demonstration of how to display an image that's uploaded to this repo:
-![screenshot showing env diagram](withdraw.png)
 
 ##Concepts Demonstrated
 Identify the OPL concepts demonstrated in your project. Be brief. A simple list and example is sufficient. 
 * **Data abstraction** is used to provide access to the data in the database.
+* **Use of Built in Racket procedures** regex,stddev,mean
+* **Racket Libraries** Plot2d used for discrete histograms
+* **Racket structures** we had to learn racket vectors to be able to work with the graphs.
 
 
 ##External Technology and Libraries
->(delete this line)Briefly describe the existing technology you utilized, and how you used it. Provide a link to that technology(ies).
+
 
 (require math/statistics) was used to perform computation on the data. 
 
 (require plot) was used to display the results we wanted visually in a graph.
+
+Much of the technology needed is included in the base package of racket so most was not needed to be installed as it could be used without a require.
 
 
 ##Favorite Scheme Expressions
