@@ -646,7 +646,7 @@
       #:y-label "Sales"
       ;;Replaced with dynamic names for each graph
       ;#:out-file "totalSoldPlot.png"
-      #:out-file (string-append (string-append (string-append first-name-label " VS ") second-name-label) ".png")
+      #:out-file (string-append (string-append (string-append first-name-label (string-append (number->string first-year) " VS ")) second-name-label (string-append (number->string second-year))) ".png")
       #:out-kind 'png
   )
 )
