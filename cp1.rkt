@@ -46,10 +46,10 @@
 ;;;;;;;;;;;
 (define (help)
   (displayln "Use  (help) to show procedures that are available:")
-  (displayln "To show the current status of the database use: carDB")
+  (displayln "To show the current status of the database use: carDB\n")
   (displayln "To comapare use --(vs first-name first-year second-name second-year)--")
-  (displayln "To comapare use --(vs first-name first-year second-name second-year)--")
-  (displayln "To comapare use --(vs first-name first-year second-name second-year)--")
+  (displayln "             EX:--(vs ''Bob_Autos 2015 ''Jil_Autos 2015)--\n")
+  (displayln " ")
   (displayln "To comapare use --(vs first-name first-year second-name second-year)--")
 )
 ;;Prints out on first run
@@ -614,8 +614,13 @@
 
                
 (define (vs first-name first-year second-name second-year)
-  (define record1 (dealer-year-sales2 first-name 2015 carDB))
-  (define record2 (dealer-year-sales2 second-name 2015 carDB))
+  ;;These two search for the names and return the records that are to be graphed
+  (define record1 (dealer-year-sales2 first-name first-year carDB))
+  (define record2 (dealer-year-sales2 second-name second-year carDB))
+
+  ;These take the names searched for and manipulates them to look nice in the Labels of the graph
+  (define first-name-label (regexp-replace* #rx"([()])" (~a (list-tail (first record1) 1)) ""))
+  (define second-name-label (regexp-replace* #rx"([()])" (~a (list-tail (first record2) 1)) ""))
 
   (plot (list (discrete-histogram
                ;;'(#(January (get-January-value2 rec1)) #(Feburary (get-February-value2 rec1)) #(March (get-March-value2 rec1)) #(April (get-April-value2 rec1)) #(May (get-May-value2 rec1)) #(June (get-June-value2 rec1))
@@ -625,7 +630,8 @@
                #:x-min 0
                #:y-max 1500
                #:invert? #f
-               #:label (regexp-replace* #rx"([()])" (~a (list-tail (first record1) 1)) ""))
+               #:label (string-append first-name-label (string-append " " (number->string first-year)))
+               )
               (discrete-histogram
               ;;'(#(January (get-January-value2 rec2)) #(Feburary (get-February-value2 rec2)) #(March (get-March-value2 rec2)) #(April (get-April-value2 rec2)) #(May (get-May-value2 rec2)) #(June (get-June-value2 rec2))
               ;;  #(July (get-July-value2 rec2)) #(August (get-August-value2 rec2)) #(September (get-September-value2 rec2)) #(October (get-October-value2 rec2)) #(November (get-November-value2 rec2)) #(December (get-December-value2 rec2)))
@@ -634,11 +640,16 @@
                #:x-min 1
                #:y-max 1500
                #:invert? #f
-               #:label (regexp-replace* #rx"([()])" (~a (list-tail (first record2) 1)) "") #:color 2 #:line-color 2))
+               #:label (string-append second-name-label (string-append " " (number->string second-year)))
+               #:color 2
+               #:line-color 2
+               )
+              )
       #:width 1000
       #:x-label "Month"
       #:y-label "Sales"
-      #:out-file "totalSoldPlot.png"	 
+      ;#:out-file "totalSoldPlot.png"
+      #:out-file (string-append (string-append (string-append first-name-label " VS ") second-name-label) ".png")
       #:out-kind 'png
   )
 )
