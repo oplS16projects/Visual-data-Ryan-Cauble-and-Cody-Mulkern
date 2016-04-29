@@ -12,7 +12,7 @@ Cody Mulkern
 Take in small or large amounts of data from an outside file. Store this data into a database for organization and easy access to desired sub parts of that data. Perform Mathmatical operations on that data and display it visually in a graph.  
 
 ##Screenshot
-![alt](https://raw.githubusercontent.com/oplS16projects/Visual-data-Ryan-Cauble-and-Cody-Mulkern/master/Bob_Autos%20VS%20Jil_Autos.png)
+![alt](https://raw.githubusercontent.com/oplS16projects/Visual-data-Ryan-Cauble-and-Cody-Mulkern/master/Bob_Autos2015%20VS%20Jil_Autos2014.png)
 (insert a screenshot here. You may opt to get rid of the title for it. You need at least one screenshot. Make it actually appear here, don't just add a link.)
 
 Here's a demonstration of how to display an image that's uploaded to this repo:
