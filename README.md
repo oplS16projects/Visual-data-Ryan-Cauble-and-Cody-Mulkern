@@ -42,30 +42,55 @@ My favorite procedure was one I wrote to add up all numbers in all the months fo
          )
 )  
 ```
-####Lillian (another team member)
-This expression reads in a regular expression and elegantly matches it against a pre-existing hashmap....
+####Cody 
+This was my favorite expression because of how much I had to learn and research into to get it working. I had to learn how to make vectors and put them into lists to make the data work with the plot2d discrete-histograms. Also Had to use regular expressions to go through the lists to pull out names to use for labels on the graphs themselves. It is a long procedure but it does a lot of work and most of it is just the options for the graph itself.
 ```scheme
-(let* ((expr (convert-to-regexp (read-line my-in-port)))
-             (matches (flatten
-                       (hash-map *words*
-                                 (lambda (key value)
-                                   (if (regexp-match expr key) key '()))))))
-  matches)
+(define (vs first-name first-year second-name second-year)
+  ;;These two search for the names and return the records that are to be graphed
+  (define record1 (dealer-year-sales2 first-name first-year carDB))
+  (define record2 (dealer-year-sales2 second-name second-year carDB))
+
+  ;These take the names searched for and manipulates them to look nice in the Labels of the graph
+  (define first-name-label (regexp-replace* #rx"([()])" (~a (list-tail (first record1) 1)) ""))
+  (define second-name-label (regexp-replace* #rx"([()])" (~a (list-tail (first record2) 1)) ""))
+
+  (plot (list (discrete-histogram
+               ;;'(#(January (get-January-value2 rec1)) #(Feburary (get-February-value2 rec1)) #(March (get-March-value2 rec1)) #(April (get-April-value2 rec1)) #(May (get-May-value2 rec1)) #(June (get-June-value2 rec1))
+               ;;  #(July (get-July-value2 rec1)) #(August (get-August-value2 rec1)) #(September (get-September-value2 rec1)) #(October (get-October-value2 rec1)) #(November (get-November-value2 rec1)) #(December (get-December-value2 rec1)))
+               (make-vector record1)
+               #:skip 2.5
+               #:x-min 0
+               #:y-max 1500
+               #:invert? #f
+               #:label (string-append first-name-label (string-append " " (number->string first-year)))
+               )
+              (discrete-histogram
+              ;;'(#(January (get-January-value2 rec2)) #(Feburary (get-February-value2 rec2)) #(March (get-March-value2 rec2)) #(April (get-April-value2 rec2)) #(May (get-May-value2 rec2)) #(June (get-June-value2 rec2))
+              ;;  #(July (get-July-value2 rec2)) #(August (get-August-value2 rec2)) #(September (get-September-value2 rec2)) #(October (get-October-value2 rec2)) #(November (get-November-value2 rec2)) #(December (get-December-value2 rec2)))
+               (make-vector record2)
+               #:skip 2.5
+               #:x-min 1
+               #:y-max 1500
+               #:invert? #f
+               #:label (string-append second-name-label (string-append " " (number->string second-year)))
+               #:color 2
+               #:line-color 2
+               )
+              )
+      #:width 1000
+      #:x-label "Month"
+      #:y-label "Sales"
+      ;;Replaced with dynamic names for each graph
+      ;#:out-file "totalSoldPlot.png"
+      #:out-file (string-append (string-append (string-append first-name-label " VS ") second-name-label) ".png")
+      #:out-kind 'png
+  )
+)
 ```
 
-##Additional Remarks
-Anything else you want to say in your report. Can rename or remove this section.
 
 #How to Download and Run
-You may want to link to your latest release for easy downloading by people (such as Mark).
-
-Include what file to run, what to do with that file, how to interact with the app when its running, etc. 
-
-
-
-
-
-
+To run our project you must just open cp1.rkt and run the racket file. From there you will be presented with the options of what you can do with it.
 
 
 
