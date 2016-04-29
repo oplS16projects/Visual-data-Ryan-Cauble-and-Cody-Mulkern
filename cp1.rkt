@@ -42,15 +42,25 @@
 ;;
 ;; -(vs first-name first-year second-name second-year)
 ;;
+;; -(average-sold-for-year "Name of dealer" "Year")
 ;;
+;; -(stddev-sold-for-year "Name of dealer" "Year")
 ;;;;;;;;;;;
 (define (help)
-  (displayln "Use  (help) to show procedures that are available:")
+  (displayln "Welcome to Data visualisation where your data extracted and compiled in a Visual way.\n" )
+  (displayln "Use (help) to show procedures that are available:\n")
   (displayln "To show the current status of the database use: carDB\n")
-  (displayln "To comapare use --(vs first-name first-year second-name second-year)--")
-  (displayln "             EX:--(vs ''Bob_Autos 2015 ''Jil_Autos 2015)--\n")
+  (displayln "To comapare use  --(vs first-name first-year second-name second-year)--")
+  (displayln "              EX:--(vs ''Bob_Autos 2015 ''Jil_Autos 2015)--")
+  (displayln "              EX:--(vs ''Bob_Autos 2015 ''Bob_Autos 2014)--")
   (displayln " ")
-  (displayln "To comapare use --(vs first-name first-year second-name second-year)--")
+  (displayln "To check average --(average-sold name year)--")
+  (displayln "              EX:--(average-sold ''Bob_Autos 2015)--")
+  (displayln "              EX:--(average-sold ''Jil_Autos 2015)--")
+  (displayln " ")
+  (displayln "To check std-dev --(stddev-sold name year)--")
+  (displayln "              EX:--(stddev-sold ''Bob_Autos 2015)--")
+  (displayln "              EX:--(stddev-sold ''Jil_Autos 2015)--")
 )
 ;;Prints out on first run
 (help)
@@ -416,30 +426,7 @@
 ;;
 
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;
-;; -Find the average sold for the name and year
-;;
-;; --Once Ryan gets searching in DB working this procedure will be switched to (average-sold-for-year "Name of dealer" "Year")
-;;
-;; --Once Ryan gets searching in DB working this procedure will be switched to (stddev-sold-for-year "Name of dealer" "Year")
-;;
-;; --Need function to grab a entry of a specified name and year
-;;
-;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(define (average-sold-for-year rec )
-  (if (null? rec) (error "Not Found") (printf "Average cars sold at ~a for the year ~a is: ~a" (first rec)
-                                                                                                  (second rec)
-                                                                                                  (mean (take (list-tail rec 2) 12))))
-)
 
-
-(define (stddev-sold-for-year rec )
-  (if (null? rec) (error "Not Found") (printf "Standard Deviation for cars sold at ~a for the year ~a is: ~a" (first rec)
-                                                                                                  (second rec)
-                                                                                                  (stddev (take (list-tail rec 2) 12))))
-)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -558,6 +545,45 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;; -Find the average sold for the name and year
+;;
+;; --Once Ryan gets searching in DB working this procedure will be switched to (average-sold-for-year "Name of dealer" "Year")
+;;
+;; --Once Ryan gets searching in DB working this procedure will be switched to (stddev-sold-for-year "Name of dealer" "Year")
+;;
+;; --Need function to grab a entry of a specified name and year
+;;
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(define (average-sold-for-year-old rec )
+  (if (null? rec) (error "Not Found") (printf "Average cars sold at ~a for the year ~a is: ~a" (first rec)
+                                                                                                  (second rec)
+                                                                                                  (mean (take (list-tail rec 2) 12))))
+)
+
+(define (average-sold name year )
+  (define record1 (dealer-year-sales2 name year carDB))
+  (if (null? record1) (error "Not Found") (printf "Average cars sold at ~a for the year ~a is: ~a" (first record1)
+                                                                                                  (second record1)
+                                                                                                  (round(mean (take (list-tail record1 2) 12)))))
+)
+
+
+(define (stddev-sold-for-year-old rec )
+  (if (null? rec) (error "Not Found") (printf "Standard Deviation for cars sold at ~a for the year ~a is: ~a" (first rec)
+                                                                                                  (second rec)
+                                                                                                  (stddev (take (list-tail rec 2) 12))))
+)
+
+(define (stddev-sold name year )
+  (define record1 (dealer-year-sales2 name year carDB))
+  (if (null? record1) (error "Not Found") (printf "Standard Deviation for cars sold at ~a for the year ~a is: ~a" (first record1)
+                                                                                                  (second record1)
+                                                                                                  (round(stddev (take (list-tail record1 2) 12)))))
+)
+
 
 
 
@@ -583,36 +609,6 @@
   )
 )
 
-(define (vs-old rec1 rec2)
-  (define v (list (vector 'January (get-January-value2 rec1)) (vector 'January (get-January-value2 rec1)) (vector 'January (get-January-value2 rec1))))
-  
-  (plot (list (discrete-histogram
-               ;;'(#(January (get-January-value2 rec1)) #(Feburary (get-February-value2 rec1)) #(March (get-March-value2 rec1)) #(April (get-April-value2 rec1)) #(May (get-May-value2 rec1)) #(June (get-June-value2 rec1))
-               ;;  #(July (get-July-value2 rec1)) #(August (get-August-value2 rec1)) #(September (get-September-value2 rec1)) #(October (get-October-value2 rec1)) #(November (get-November-value2 rec1)) #(December (get-December-value2 rec1)))
-               (make-vector rec1)
-               #:skip 2.5
-               #:x-min 0
-               #:y-max 1500
-               #:invert? #f
-               #:label (regexp-replace* #rx"([()])" (~a (list-tail (first rec1) 1)) ""))
-              (discrete-histogram
-              ;;'(#(January (get-January-value2 rec2)) #(Feburary (get-February-value2 rec2)) #(March (get-March-value2 rec2)) #(April (get-April-value2 rec2)) #(May (get-May-value2 rec2)) #(June (get-June-value2 rec2))
-              ;;  #(July (get-July-value2 rec2)) #(August (get-August-value2 rec2)) #(September (get-September-value2 rec2)) #(October (get-October-value2 rec2)) #(November (get-November-value2 rec2)) #(December (get-December-value2 rec2)))
-               (make-vector rec2)
-               #:skip 2.5
-               #:x-min 1
-               #:y-max 1500
-               #:invert? #f
-               #:label (regexp-replace* #rx"([()])" (~a (list-tail (first rec2) 1)) "") #:color 2 #:line-color 2))
-      #:width 1000
-      #:x-label "Month"
-      #:y-label "Sales"
-      #:out-file "totalSoldPlot.png"	 
-      #:out-kind 'png
-      )
-)
-
-               
 (define (vs first-name first-year second-name second-year)
   ;;These two search for the names and return the records that are to be graphed
   (define record1 (dealer-year-sales2 first-name first-year carDB))
@@ -648,11 +644,45 @@
       #:width 1000
       #:x-label "Month"
       #:y-label "Sales"
+      ;;Replaced with dynamic names for each graph
       ;#:out-file "totalSoldPlot.png"
       #:out-file (string-append (string-append (string-append first-name-label " VS ") second-name-label) ".png")
       #:out-kind 'png
   )
 )
+
+
+(define (vs-old rec1 rec2)
+  (define v (list (vector 'January (get-January-value2 rec1)) (vector 'January (get-January-value2 rec1)) (vector 'January (get-January-value2 rec1))))
+  
+  (plot (list (discrete-histogram
+               ;;'(#(January (get-January-value2 rec1)) #(Feburary (get-February-value2 rec1)) #(March (get-March-value2 rec1)) #(April (get-April-value2 rec1)) #(May (get-May-value2 rec1)) #(June (get-June-value2 rec1))
+               ;;  #(July (get-July-value2 rec1)) #(August (get-August-value2 rec1)) #(September (get-September-value2 rec1)) #(October (get-October-value2 rec1)) #(November (get-November-value2 rec1)) #(December (get-December-value2 rec1)))
+               (make-vector rec1)
+               #:skip 2.5
+               #:x-min 0
+               #:y-max 1500
+               #:invert? #f
+               #:label (regexp-replace* #rx"([()])" (~a (list-tail (first rec1) 1)) ""))
+              (discrete-histogram
+              ;;'(#(January (get-January-value2 rec2)) #(Feburary (get-February-value2 rec2)) #(March (get-March-value2 rec2)) #(April (get-April-value2 rec2)) #(May (get-May-value2 rec2)) #(June (get-June-value2 rec2))
+              ;;  #(July (get-July-value2 rec2)) #(August (get-August-value2 rec2)) #(September (get-September-value2 rec2)) #(October (get-October-value2 rec2)) #(November (get-November-value2 rec2)) #(December (get-December-value2 rec2)))
+               (make-vector rec2)
+               #:skip 2.5
+               #:x-min 1
+               #:y-max 1500
+               #:invert? #f
+               #:label (regexp-replace* #rx"([()])" (~a (list-tail (first rec2) 1)) "") #:color 2 #:line-color 2))
+      #:width 1000
+      #:x-label "Month"
+      #:y-label "Sales"
+      #:out-file "totalSoldPlot.png"	 
+      #:out-kind 'png
+      )
+)
+
+               
+
 
 
 

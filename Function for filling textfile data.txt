@@ -1,0 +1,19 @@
+
+Use this function to produce 12 months of mock sale data.
+This is javascript and will need to probably be run in a browser.
+
+
+
+
+function random_12( low, high){
+
+	var random_array = [];
+  
+  for(i = 0; i < 12; i++){
+  	random_array.push(Math.floor((Math.random() * high) + low));
+  }
+  
+  console.log(random_array);
+}
+
+random_12(1, 1500);
